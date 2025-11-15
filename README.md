@@ -10,7 +10,7 @@ run the command below with your package name
 flutter create --template=package packages/core
 ```
 
-## Running the App in Development Mode
+## Running the app in development mode
 
 Below are the commands to run the app in development mode on different platforms:
 
@@ -50,7 +50,7 @@ flutter run -d linux
 flutter run -d windows
 ```
 
-### List Available Devices
+### List available devices
 
 To see all available devices and their IDs:
 
@@ -58,7 +58,7 @@ To see all available devices and their IDs:
 flutter devices
 ```
 
-### Hot Reload
+### Hot reload
 
 Once the app is running, you can use:
 
