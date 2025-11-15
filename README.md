@@ -26,12 +26,6 @@ flutter run -d macos
 flutter run -d ios
 ```
 
-### iOS (Physical Device)
-
-```bash
-flutter run -d ios --device-id <device-id>
-```
-
 ### Android (Emulator)
 
 ```bash
