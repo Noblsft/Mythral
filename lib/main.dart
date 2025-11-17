@@ -1,23 +1,34 @@
-import 'package:flutter/material.dart';
-import 'package:core/core.dart';
+import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+import "package:core/core.dart";
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<VaultRepository>(create: (context) => ZipVaultRepository()),
+        ChangeNotifierProvider<StartScreenViewModel>(
+          create: (context) => StartScreenViewModel(
+            vaultRepository: context.read<VaultRepository>(),
+          ),
+        ),
+      ],
+      child: const MythralApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MythralApp extends StatelessWidget {
+  const MythralApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Mythral',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        useMaterial3: true,
+      home: Consumer<StartScreenViewModel>(
+        builder: (context, viewModel, child) {
+          return StartScreen(viewModel: viewModel);
+        },
       ),
-      home: const StartScreen(),
     );
   }
 }
