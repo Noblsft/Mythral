@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
+import "start_screen_view_model.dart";
 
 class StartScreenDesktop extends StatelessWidget {
-  const StartScreenDesktop({super.key});
+  final StartScreenViewModel viewModel;
+
+  const StartScreenDesktop({super.key, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -17,36 +20,43 @@ class StartScreenDesktop extends StatelessWidget {
               children: [
                 Center(
                   child: Image.asset(
-                    'assets/logo.png',
+                    "assets/logo.png",
                     width: 120,
                     height: 120,
                   ),
                 ),
+                const SizedBox(height: 24),
                 const Text(
-                  'Welcome to Mythral',
+                  "Mythral",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'Work with a single project file that stores everything. Secure and local on your machine.',
+                  "Work with a vault file that contains everything.",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 14, color: Colors.black54),
                 ),
                 const SizedBox(height: 32),
                 FilledButton.icon(
-                  onPressed: () => _onCreateNewFile(context),
+                  onPressed: () async {
+                    await viewModel.createVault();
+                    // TODO: Navigate to the main screen after creating a vault
+                  },
                   icon: const Icon(Icons.add),
-                  label: const Text('Create new file'),
+                  label: const Text("Create new vault"),
                   style: FilledButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                 ),
                 const SizedBox(height: 12),
                 OutlinedButton.icon(
-                  onPressed: () => _onOpenExistingFile(context),
+                  onPressed: () async {
+                    await viewModel.openVault();
+                    // TODO: Navigate to the main screen after creating a vault
+                  },
                   icon: const Icon(Icons.folder_open),
-                  label: const Text('Open existing file'),
+                  label: const Text("Open existing vault"),
                   style: OutlinedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
@@ -57,13 +67,5 @@ class StartScreenDesktop extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  void _onCreateNewFile(BuildContext context) {
-    debugPrint('Desktop: create new file');
-  }
-
-  void _onOpenExistingFile(BuildContext context) {
-    debugPrint('Desktop: open existing file');
   }
 }
