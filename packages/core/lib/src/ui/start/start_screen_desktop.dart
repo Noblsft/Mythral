@@ -41,6 +41,7 @@ class StartScreenDesktop extends StatelessWidget {
                 FilledButton.icon(
                   onPressed: () async {
                     await viewModel.createVault();
+                    // TODO: Navigate to the main screen after creating a vault
                   },
                   icon: const Icon(Icons.add),
                   label: const Text("Create new vault"),
@@ -52,6 +53,7 @@ class StartScreenDesktop extends StatelessWidget {
                 OutlinedButton.icon(
                   onPressed: () async {
                     await viewModel.openVault();
+                    // TODO: Navigate to the main screen after creating a vault
                   },
                   icon: const Icon(Icons.folder_open),
                   label: const Text("Open existing vault"),

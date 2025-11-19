@@ -38,7 +38,7 @@ class StartScreenMobile extends StatelessWidget {
             const Spacer(),
             FilledButton.icon(
               onPressed: () async {
-                await viewModel.createVault();
+                // TODO: Implement mobile file creation flow
               },
               icon: const Icon(Icons.add),
               label: const Text("Create new vault"),
@@ -46,7 +46,7 @@ class StartScreenMobile extends StatelessWidget {
             const SizedBox(height: 12),
             OutlinedButton.icon(
               onPressed: () async {
-                await viewModel.openVault();
+                // TODO: Implement mobile file creation flow
               },
               icon: const Icon(Icons.folder_open),
               label: const Text("Open existing vault"),
